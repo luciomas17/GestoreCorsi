@@ -56,5 +56,27 @@ public class CorsoDAO {
 		
 		return result;
 	}
+
+	public int countNumeroIscrizioniByPD(int periodo) {
+		String sql = "SELECT COUNT(*) FROM corso c, iscrizione i " + 
+				"WHERE c.pd = ? and c.codins = i.codins";
+		int count = 0;
+		
+		try {
+			Connection conn = DBConnect.getConnection();
+			PreparedStatement st = conn.prepareStatement(sql);
+			st.setInt(1, periodo);
+			ResultSet rs = st.executeQuery();
+			rs.next();
+			count = rs.getInt(1);
+			
+			conn.close();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return count;
+	}
 	
 }

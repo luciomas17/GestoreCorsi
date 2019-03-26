@@ -36,7 +36,20 @@ public class GestoreCorsiController {
 
     @FXML
     void doCalcolaStatCorsi(ActionEvent event) {
-
+    	int periodo;
+    	
+    	try {
+			periodo = Integer.parseInt(txtPeriodo.getText());
+		} catch (NumberFormatException e) {
+			txtResult.appendText("Devi inserire un periodo (1 o 2)\n");
+			return;
+		}
+    	if(periodo != 1 && periodo !=2) {
+    		txtResult.appendText("Devi inserire un periodo (1 o 2)\n");
+			return;
+    	}
+    	
+    	txtResult.appendText(this.model.getNumeroIscrizioniByPeriodo(periodo) + " iscritto/i ai corsi nel periodo " + periodo + "\n");
     }
 
     @FXML
