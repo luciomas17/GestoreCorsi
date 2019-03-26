@@ -9,6 +9,7 @@ import it.polito.tdp.corsi.model.Corso;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 
@@ -33,9 +34,9 @@ public class GestoreCorsiController {
 
     @FXML
     private Button btnStatCorsi;
-
+    
     @FXML
-    private TextField txtCorso;
+    private ComboBox<String> boxCorso;
 
     @FXML
     private Button btnCercaStudenti;
@@ -98,7 +99,6 @@ public class GestoreCorsiController {
         assert txtPeriodo != null : "fx:id=\"txtPeriodo\" was not injected: check your FXML file 'GestoreCorsi.fxml'.";
         assert btnCercaCorsi != null : "fx:id=\"btnCercaCorsi\" was not injected: check your FXML file 'GestoreCorsi.fxml'.";
         assert btnStatCorsi != null : "fx:id=\"btnStatCorsi\" was not injected: check your FXML file 'GestoreCorsi.fxml'.";
-        assert txtCorso != null : "fx:id=\"txtCorso\" was not injected: check your FXML file 'GestoreCorsi.fxml'.";
         assert btnCercaStudenti != null : "fx:id=\"btnCercaStudenti\" was not injected: check your FXML file 'GestoreCorsi.fxml'.";
         assert btnDivStudenti != null : "fx:id=\"btnDivStudenti\" was not injected: check your FXML file 'GestoreCorsi.fxml'.";
 
@@ -106,6 +106,10 @@ public class GestoreCorsiController {
     
     public void setModel(GestoreCorsi model) {
     	this.model = model;
+    	
+    	List<String> nomiCorsi = this.model.getNomeCorsi();
+    	for(String nome : nomiCorsi)
+        	this.boxCorso.getItems().add(nome);
     }
-    
+
 }

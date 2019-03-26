@@ -10,8 +10,8 @@ import it.polito.tdp.corsi.model.Corso;
 
 public class CorsoDAO {
 
-	public List<Corso> listAll() {
-		String sql = "SELECT * FROM corso";
+	public List<Corso> listCorsi() {
+		String sql = "SELECT * FROM corso ORDER BY nome";
 		List<Corso> result = new ArrayList<Corso>();
 		
 		try {
@@ -78,5 +78,5 @@ public class CorsoDAO {
 		
 		return count;
 	}
-	
+
 }
