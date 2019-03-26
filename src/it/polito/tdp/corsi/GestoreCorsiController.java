@@ -35,6 +35,15 @@ public class GestoreCorsiController {
     private Button btnStatCorsi;
 
     @FXML
+    private TextField txtCorso;
+
+    @FXML
+    private Button btnCercaStudenti;
+
+    @FXML
+    private Button btnDivStudenti;
+
+    @FXML
     void doCalcolaStatCorsi(ActionEvent event) {
     	int periodo;
     	
@@ -72,6 +81,16 @@ public class GestoreCorsiController {
     		txtResult.appendText(c.toString() + "\n");
     	}
     }
+    
+    @FXML
+    void doCercaStudenti(ActionEvent event) {
+
+    }
+
+    @FXML
+    void doDividiStudentiTraCDS(ActionEvent event) {
+
+    }
 
     @FXML
     void initialize() {
@@ -79,6 +98,9 @@ public class GestoreCorsiController {
         assert txtPeriodo != null : "fx:id=\"txtPeriodo\" was not injected: check your FXML file 'GestoreCorsi.fxml'.";
         assert btnCercaCorsi != null : "fx:id=\"btnCercaCorsi\" was not injected: check your FXML file 'GestoreCorsi.fxml'.";
         assert btnStatCorsi != null : "fx:id=\"btnStatCorsi\" was not injected: check your FXML file 'GestoreCorsi.fxml'.";
+        assert txtCorso != null : "fx:id=\"txtCorso\" was not injected: check your FXML file 'GestoreCorsi.fxml'.";
+        assert btnCercaStudenti != null : "fx:id=\"btnCercaStudenti\" was not injected: check your FXML file 'GestoreCorsi.fxml'.";
+        assert btnDivStudenti != null : "fx:id=\"btnDivStudenti\" was not injected: check your FXML file 'GestoreCorsi.fxml'.";
 
     }
     
