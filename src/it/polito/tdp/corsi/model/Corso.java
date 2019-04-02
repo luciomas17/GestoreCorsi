@@ -74,7 +74,14 @@ public class Corso {
 
 	@Override
 	public String toString() {
-		return String.format("Corso [codins=%s, crediti=%s, nome=%s, pd=%s]", codins, crediti, nome, pd);
+		StringBuilder sb = new StringBuilder();
+
+		sb.append(String.format("%-10s ", codins));
+		sb.append(String.format("%-3s ", crediti));
+		sb.append(String.format("%-60s ", nome));			
+		sb.append(String.format("%-10s ", pd));
+		
+		return sb.toString();
 	}
 
 }

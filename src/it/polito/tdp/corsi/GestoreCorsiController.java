@@ -46,6 +46,8 @@ public class GestoreCorsiController {
 
     @FXML
     void doCalcolaStatCorsi(ActionEvent event) {
+    	this.txtResult.clear();
+    	
     	int periodo;
     	
     	try {
@@ -64,6 +66,8 @@ public class GestoreCorsiController {
 
     @FXML
     void doCercaCorsi(ActionEvent event) {
+    	this.txtResult.clear();
+    	
     	int periodo;
     	
     	try {
@@ -85,11 +89,13 @@ public class GestoreCorsiController {
     
     @FXML
     void doCercaStudenti(ActionEvent event) {
+    	this.txtResult.clear();
 
     }
 
     @FXML
     void doDividiStudentiTraCDS(ActionEvent event) {
+    	this.txtResult.clear();
 
     }
 
@@ -102,6 +108,7 @@ public class GestoreCorsiController {
         assert btnCercaStudenti != null : "fx:id=\"btnCercaStudenti\" was not injected: check your FXML file 'GestoreCorsi.fxml'.";
         assert btnDivStudenti != null : "fx:id=\"btnDivStudenti\" was not injected: check your FXML file 'GestoreCorsi.fxml'.";
 
+        this.txtResult.setStyle("-fx-font-family: monospace");
     }
     
     public void setModel(GestoreCorsi model) {
