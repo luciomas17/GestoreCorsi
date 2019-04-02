@@ -78,7 +78,7 @@ public class Corso {
 
 		sb.append(String.format("%-10s ", codins));
 		sb.append(String.format("%-3s ", crediti));
-		sb.append(String.format("%-60s ", nome));			
+		sb.append(String.format("%-55s ", nome));			
 		sb.append(String.format("%-10s ", pd));
 		
 		return sb.toString();

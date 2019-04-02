@@ -2,9 +2,12 @@ package it.polito.tdp.corsi;
 
 import java.net.URL;
 import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
 import java.util.ResourceBundle;
 
 import it.polito.tdp.corsi.model.GestoreCorsi;
+import it.polito.tdp.corsi.model.Studente;
 import it.polito.tdp.corsi.model.Corso;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -61,7 +64,13 @@ public class GestoreCorsiController {
 			return;
     	}
     	
-    	txtResult.appendText(this.model.getNumeroIscrizioniByPeriodo(periodo) + " iscritto/i ai corsi nel periodo " + periodo + "\n");
+    	StringBuilder sb = new StringBuilder();
+    	for(Entry<Corso, Integer> entry : this.model.getIscrittiCorsi(periodo).entrySet()) {
+    		sb.append(String.format("%-55s ", entry.getKey().getNome()));			
+    		sb.append(String.format("%-10s ", entry.getValue()));
+    		sb.append("\n");
+    	}
+    	txtResult.appendText(sb.toString());
     }
 
     @FXML
@@ -90,7 +99,13 @@ public class GestoreCorsiController {
     @FXML
     void doCercaStudenti(ActionEvent event) {
     	this.txtResult.clear();
-
+    	
+    	String corso[] = this.boxCorso.getSelectionModel().getSelectedItem().split("  -  ");
+    	
+    	List<Studente> studenti = this.model.getStudenti(corso[0]);
+    	for(Studente s : studenti) {
+    		txtResult.appendText(s.toString() + "\n");
+    	}
     }
 
     @FXML
@@ -114,9 +129,9 @@ public class GestoreCorsiController {
     public void setModel(GestoreCorsi model) {
     	this.model = model;
     	
-    	List<String> nomiCorsi = this.model.getNomeCorsi();
-    	for(String nome : nomiCorsi)
-        	this.boxCorso.getItems().add(nome);
+    	Map<String, String> nomiCorsi = this.model.getNomeCorsi();
+    	for(Entry<String, String> rs : nomiCorsi.entrySet())
+        	this.boxCorso.getItems().add(rs.getKey() + "  -  " + rs.getValue());
     }
 
 }
